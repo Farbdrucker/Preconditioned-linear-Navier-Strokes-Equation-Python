@@ -65,6 +65,7 @@ cy_nu = [0.005000, 0.003333, 0.002500, 0.001667, 0.001250, 0.001000]
 
 
 # preconditioning strategies
+# LSC and simple available
 cy_prec = ['LSC']
 
 
