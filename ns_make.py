@@ -52,7 +52,7 @@ def bf_bc(mesh,V,Q):
 	return bcs
 
 
-def cy_bc(mesh,V,Q):
+def 	cy_bc(mesh,V,Q):
 	# Constants related to the geometry of the mesh
 	bmarg   = 1.e-3 + DOLFIN_EPS
 	xmin    = 0.0

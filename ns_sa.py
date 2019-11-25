@@ -1,3 +1,4 @@
+from typing import List
 from dolfin import *
 from block import *
 from block.iterative import *
@@ -5,15 +6,79 @@ from block.algebraic.petsc import *
 from block.dolfin_util import *
 from block.iterative import *
 import numpy as np
-import subprocess
+
 import os
 from instant import*
 from flufl import*
 import scipy.io as sio
-import scipy
-import sys
+
 import time
 import ns_make as m
+
+
+
+
+
+
+
+
+
+
+
+class FlowSimulation:
+    def __init__(self):
+        builder = SimulationBuilder()
+        self.environment = builder.create_environment()
+
+        self.velocity
+
+    def step_scheme(self):
+        """
+        implement discretization scheme to solve linearized Navier-Stokes equation
+        return corresponding blocks A of mass matrix
+            [[A B],
+            [B.T 0]]
+        Returns:
+
+        """
+        raise NotImplementedError
+
+
+    def build_block(self):
+        a11 = self.step_scheme()
+        lhs = block_assemble([[at, self.a12],
+                                [self.a21, 0]],
+                                  bcs=self.environment.boundary_conditions)
+
+        bb2_e = block_assemble([L2, 0],
+                               bcs=self.environment.boundary_conditions)
+
+
+
+    def solve(self):
+        raise NotImplementedError
+
+
+
+
+
+# specify simulation time and step size
+
+# Inital Step
+
+# Build Block
+    # Simo Armero Scheme
+
+    # Backward Euler Scheme
+
+    # Time Stepping Scheme
+
+# Build Preconditioner
+    # Simple
+    # LSC
+
+# Solve
+
 
 def main(refinement_level,nu,prec_choice,bplot,T):
 	# Print log messages only from the root process in parallel

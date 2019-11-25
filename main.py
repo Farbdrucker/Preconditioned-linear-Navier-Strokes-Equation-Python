@@ -2,49 +2,7 @@
 import ns_sa
 import ns_euler
 import ns_bf_ts
-#import ns_bf_sa2    # rewrite ns_sa.py so it works with the BF mesh
-import ns_make as nsm
 
-from time import*
-from dolfin import *
-from block import *
-from block.iterative import *
-from block.algebraic.petsc import *
-from block.dolfin_util import *
-from block.iterative import *
-import numpy as np
-import subprocess
-import os
-from instant import*
-from flufl import*
-import scipy.io as sio
-import scipy
-import sys
-
-
-
-def writetxt(c,filename, python ,m,nu,p,T,tol = 'default'):
-	lt = localtime()
-	f = open(filename,"a")
-	f.write("\n%d."%c)
-	f.write("\n"+ python +" started at [%02d.%02d ; %02d:%02d] with" %(lt[2], lt[1], lt[3], lt[4]))
-	f.write("\n\tPreconditioning:\t"+ p)
-	f.write("\n\tMesh:\t\t\t%d"%m)
-	f.write("\n\tviscosity:\t\t%f"%nu)
-	if tol != 'default':
-		f.write("\n\ttol:\t\t\t%f"%tol)
-	
-	f.close()
-
-def writeend(filename):
-	lt = localtime()
-	f = open(filename,"a")
-	f.write("\n\nended at [%02d.%02d ; %02d:%02d]" %(lt[2], lt[1], lt[3], lt[4]))
-	f.write("\n\n---------------------------------------------")
-	f.close()
-
-##########################
-#default
 dt = 1
 reason = ''
 #########################
